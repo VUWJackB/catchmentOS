@@ -1,0 +1,5 @@
+brave-bin
+picom-git
+nordic-theme
+ly
+pipes.sh
