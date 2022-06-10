@@ -2,4 +2,6 @@ brave-bin
 picom-git
 nordic-theme
 ly
-pipes.sh
+onlyoffice-bin
+visual-studio-code-bin
+--END AUR--

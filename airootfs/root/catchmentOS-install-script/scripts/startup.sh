@@ -258,11 +258,11 @@ esac
 # @description Disk selection for drive to be used with installation.
 diskpart () {
 echo -ne "
-------------------------------------------------------------------------
+------------------------------------------------------------------------------
     THIS WILL FORMAT AND DELETE ALL DATA ON THE DISK
     Please make sure you know what you are doing because
     after formating your disk there is no way to get data back
-------------------------------------------------------------------------
+------------------------------------------------------------------------------
 
 "
 
@@ -305,7 +305,7 @@ set_option NAME_OF_MACHINE $nameofmachine
 aurhelper () {
   # Let the user choose AUR helper from predefined list
   echo -ne "Please enter your desired AUR helper:\n"
-  options=(paru yay picaur aura trizen pacaur none)
+  options=(paru yay picaur aura trizen pacaur)
   select_option $? 4 "${options[@]}"
   aur_helper=${options[$?]}
   set_option AUR_HELPER $aur_helper

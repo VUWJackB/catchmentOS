@@ -13,15 +13,12 @@ echo -ne "
  #    # #    #   #   #    # #    # #    # #      #   ##   #   #     # #     # 
   ####  #    #   #    ####  #    # #    # ###### #    #   #   #######  #####  
 -------------------------------------------------------------------------------
-                    Automated Arch Linux Installer
-                        SCRIPTHOME: catchmentOS-install-script
--------------------------------------------------------------------------------
 "
 source $HOME/catchmentOS-install-script/configs/setup.conf
 echo -ne "
--------------------------------------------------------------------------
-                    Setting up mirrors for optimal download 
--------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+Setting up mirrors for optimal download 
+-------------------------------------------------------------------------------
 "
 pacman -S --noconfirm --needed pacman-contrib curl
 pacman -S --noconfirm --needed reflector rsync grub arch-install-scripts git
@@ -29,11 +26,11 @@ cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
 
 nc=$(grep -c ^processor /proc/cpuinfo)
 echo -ne "
--------------------------------------------------------------------------
-                    You have " $nc" cores. And
-			changing the makeflags for "$nc" cores. Aswell as
-				changing the compression settings.
--------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+You have " $nc" cores. And
+changing the makeflags for "$nc" cores. Aswell as
+changing the compression settings.
+-------------------------------------------------------------------------------
 "
 TOTAL_MEM=$(cat /proc/meminfo | grep -i 'memtotal' | grep -o '[[:digit:]]*')
 if [[  $TOTAL_MEM -gt 8000000 ]]; then
@@ -41,9 +38,9 @@ sed -i "s/#MAKEFLAGS=\"-j2\"/MAKEFLAGS=\"-j$nc\"/g" /etc/makepkg.conf
 sed -i "s/COMPRESSXZ=(xz -c -z -)/COMPRESSXZ=(xz -c -T $nc -z -)/g" /etc/makepkg.conf
 fi
 echo -ne "
--------------------------------------------------------------------------
-                    Setup Language to US and set locale  
--------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+Setup Language to US and set locale  
+-------------------------------------------------------------------------------
 "
 sed -i 's/^#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen
 locale-gen
@@ -66,19 +63,23 @@ sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
 pacman -Sy --noconfirm --needed
 
 echo -ne "
--------------------------------------------------------------------------
-                    Installing Base System  
--------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+Installing Base System  
+-------------------------------------------------------------------------------
 "
 sed -n '/'$INSTALL_TYPE'/q;p' $HOME/catchmentOS-install-script/pkg-files/pacman-pkgs.txt | while read line
 do
-  echo "INSTALLING: ${line}"
-  sudo pacman -S --noconfirm --needed ${line}
+  if [[ ${line} == '--END PACMAN--' ]]; then
+    echo "Installed Pacman Packages"
+  else
+    echo "INSTALLING: ${line}"
+    sudo pacman -S --noconfirm --needed ${line}
+  fi
 done
 echo -ne "
--------------------------------------------------------------------------
-                    Installing Microcode
--------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+Installing Microcode
+-------------------------------------------------------------------------------
 "
 # determine processor type and install microcode
 proc_type=$(lscpu)
@@ -93,9 +94,9 @@ elif grep -E "AuthenticAMD" <<< ${proc_type}; then
 fi
 
 echo -ne "
--------------------------------------------------------------------------
-                    Installing Graphics Drivers
--------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+Installing Graphics Drivers
+-------------------------------------------------------------------------------
 "
 # Graphics Drivers find and install
 gpu_type=$(lspci)
@@ -150,9 +151,9 @@ echo "password=${password,,}" >> ${HOME}/catchmentOS-install-script/configs/setu
     echo "NAME_OF_MACHINE=${name_of_machine,,}" >> ${HOME}/catchmentOS-install-script/configs/setup.conf
 fi
 echo -ne "
--------------------------------------------------------------------------
-                    Adding User
--------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+Adding User
+-------------------------------------------------------------------------------
 "
 if [ $(whoami) = "root"  ]; then
     groupadd libvirt
@@ -180,7 +181,7 @@ if [[ ${FS} == "luks" ]]; then
     mkinitcpio -p linux
 fi
 echo -ne "
--------------------------------------------------------------------------
-                    SYSTEM READY FOR 2-user.sh
--------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+SYSTEM READY FOR 2-user.sh
+-------------------------------------------------------------------------------
 "

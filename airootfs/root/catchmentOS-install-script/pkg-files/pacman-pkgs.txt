@@ -7,9 +7,12 @@ automake
 base
 bash-completion
 bison
+bluez
+bluez-libs
+bluez-utils
 bottom
-btrfs-progs
 calcurse
+cmus
 cronie
 cups
 cups-pdf
@@ -29,13 +32,12 @@ gcc
 ghostscript
 gimp
 git
+gnome-disk-utility
 gptfdisk
 groff
 haveged
-inkscape
+hunspell
 libtool
-linux
-linux-firmware
 lsof
 lxappearance
 lzop
@@ -79,3 +81,4 @@ xf86-input-synaptics
 xorg-server
 xorg-xinit
 zip
+--END PACMAN--

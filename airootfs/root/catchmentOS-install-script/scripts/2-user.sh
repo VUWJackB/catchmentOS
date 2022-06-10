@@ -13,10 +13,6 @@ echo -ne "
  #    # #    #   #   #    # #    # #    # #      #   ##   #   #     # #     # 
   ####  #    #   #    ####  #    # #    # ###### #    #   #   #######  #####  
 -------------------------------------------------------------------------------
-                    Automated Arch Linux Installer
-                        SCRIPTHOME: catchmentOS-install-script
--------------------------------------------------------------------------------
-
 Installing AUR Softwares
 "
 source $HOME/catchmentOS-install-script/configs/setup.conf
@@ -34,12 +30,12 @@ if [[ ! $AUR_HELPER == none ]]; then
   # stop the script and move on, not installing any more packages below that line
   sed -n '/'$INSTALL_TYPE'/q;p' ~/catchmentOS-install-script/pkg-files/aur-pkgs.txt | while read line
   do
-    if [[ ${line} == '--END OF MINIMAL INSTALL--' ]]; then
-      # If selected installation type is FULL, skip the --END OF THE MINIMAL INSTALLATION-- line
-      continue
+    if [[ ${line} == '--END AUR--' ]]; then
+      echo "AUR packages installed"
+    else
+      echo "INSTALLING: ${line}"
+      $AUR_HELPER -S --noconfirm --needed ${line}
     fi
-    echo "INSTALLING: ${line}"
-    $AUR_HELPER -S --noconfirm --needed ${line}
   done
 fi
 
@@ -51,8 +47,8 @@ chmod +x $HOME/.config/qtile/autostart.sh
 pip install psutil
 
 echo -ne "
--------------------------------------------------------------------------
-                    SYSTEM READY FOR 3-post-setup.sh
--------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+SYSTEM READY FOR 3-post-setup.sh
+-------------------------------------------------------------------------------
 "
 exit
