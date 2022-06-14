@@ -35,6 +35,7 @@ git
 gnome-disk-utility
 gptfdisk
 groff
+gthumb
 haveged
 hunspell
 libtool
