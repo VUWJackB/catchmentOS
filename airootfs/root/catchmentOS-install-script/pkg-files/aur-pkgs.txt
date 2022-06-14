@@ -3,5 +3,4 @@ picom-git
 nordic-theme
 ly
 onlyoffice-bin
-visual-studio-code-bin
 --END AUR--
