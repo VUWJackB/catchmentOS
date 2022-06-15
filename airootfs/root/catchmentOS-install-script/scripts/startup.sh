@@ -301,16 +301,6 @@ read -rep "Please enter your hostname: " nameofmachine
 set_option NAME_OF_MACHINE $nameofmachine
 }
 
-# @description Choose AUR helper. 
-aurhelper () {
-  # Let the user choose AUR helper from predefined list
-  echo -ne "Please enter your desired AUR helper:\n"
-  options=(paru yay picaur aura trizen pacaur)
-  select_option $? 4 "${options[@]}"
-  aur_helper=${options[$?]}
-  set_option AUR_HELPER $aur_helper
-}
-
 # More features in future
 # language (){}
 
@@ -320,15 +310,9 @@ clear
 logo
 wificonnect
 pacman -Sy
+clear
 logo
 userinfo
-clear
-logo
-clear
-logo
-aurhelper
-clear
-logo
 clear
 logo
 diskpart
