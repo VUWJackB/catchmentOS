@@ -240,7 +240,7 @@ esac
 # @description Choose whether to connect to wifi or not.
 wificonnect () {
 echo -ne "
-Do you want to connect to wifi? yes/no:
+Do you want to connect to wifi? (internet is required for the installation) yes/no:
 "
 
 options=("Yes" "No")
