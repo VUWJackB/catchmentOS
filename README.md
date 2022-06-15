@@ -16,7 +16,7 @@
 
 <hr>
 
-<h3 align="center"><br>Included Software</h3>
+<h3><br>Included Software</h3>
 
 <table style=" margin-left: auto;
   margin-right: auto;">
@@ -58,11 +58,11 @@
   </tr>
 </table>
 
-<p align="center"><a href="airootfs/root/catchmentOS-install-script/pkg-files">click here</a> for full list of included packages<br><br></p>
+<p><a href="airootfs/root/catchmentOS-install-script/pkg-files">click here</a> for full list of included packages<br><br></p>
 
 <hr>
 
-<h3 align="center"><br>Keybindings</h3>
+<h3><br>Keybindings</h3>
 
 <table style=" margin-left: auto;
   margin-right: auto;">
