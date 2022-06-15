@@ -3,4 +3,5 @@ picom-git
 nordic-theme
 ly
 onlyoffice-bin
+rofi-power-menu
 --END AUR--

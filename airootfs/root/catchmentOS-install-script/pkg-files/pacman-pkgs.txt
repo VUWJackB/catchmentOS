@@ -11,6 +11,7 @@ bluez
 bluez-libs
 bluez-utils
 bottom
+brightnessctl
 calcurse
 cmus
 cronie
@@ -74,6 +75,7 @@ unzip
 usbutils
 vim
 vlc
+volumeicon
 wget
 which
 xdg-user-dirs
