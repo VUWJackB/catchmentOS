@@ -2,7 +2,7 @@
 # ~/.bashrc
 #
 
-neofetch --source ~/.config/neofetch/art --ascii_colors 2 4
+neofetch --source ~/.config/neofetch/art --ascii_colors 4
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
