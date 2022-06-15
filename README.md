@@ -2,7 +2,7 @@
   <img src="pictures/Catchment_OS_Logo.png" />
 </p>
 <h3 align="center">
-   A minimal arch bassed operating system with a dynamic tiling window manager
+   A minimal arch based operating system with a dynamic tiling window manager
 </h3>
 <hr>
 <p align="center">
