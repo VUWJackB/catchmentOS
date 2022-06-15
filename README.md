@@ -7,7 +7,7 @@
 <hr>
 <p align="center">
   <img src="pictures/overview.png" />
-  <a href="https://github.com/VUWJackB/catchmentOS/releases"><img src="pictures/download.png" /></a><br><br>
+  <a href="https://github.com/VUWJackB/catchmentOS/releases/tag/v0.1.0"><img src="pictures/download.png" /></a><br><br>
   <img alt="GitHub all releases" src="https://img.shields.io/github/downloads/VUWJackB/catchmentOS/total">
   <img alt="GitHub release (latest by date including pre-releases)" src="https://img.shields.io/github/v/release/VUWJackB/catchmentOS?include_prereleases">
   <img alt="GitHub" src="https://img.shields.io/github/license/VUWJackB/catchmentOS">
