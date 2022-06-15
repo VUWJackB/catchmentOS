@@ -96,7 +96,6 @@ sed -i 's/^# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
 sed -i 's/^# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers
 
 rm -r $HOME/catchmentOS-install-script
-rm -r $HOME/$AUR_HELPER
 rm -r /home/$USERNAME/catchmentOS-install-script
 
 # Replace in the same state
