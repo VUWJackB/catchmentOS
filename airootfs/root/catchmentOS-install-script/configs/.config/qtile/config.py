@@ -33,6 +33,8 @@ keys = [
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod], "d", lazy.spawn("rofi -show drun"), desc="Spawn rofi drun"),
     Key([mod], "b", lazy.spawn("brave"), desc="Spawn browser"),
+    Key([mod, "shift"], "f", lazy.window.toggle_floating(), desc="toggle floating"),
+    Key([mod], "f", lazy.window.toggle_fullscreen(), desc="toggle fullscreen"),
 ]
 
 groups = []
@@ -139,8 +141,8 @@ def open_btm():
     qtile.cmd_spawn("alacritty -e btm")
 
 
-def open_yay():
-    qtile.cmd_spawn("alacritty -e yay -Syu")
+def open_paru():
+    qtile.cmd_spawn("alacritty -e paru -Syu --noconfirm")
 
 
 screens = [
@@ -187,7 +189,7 @@ screens = [
                     text=" ",
                     foreground=colors[5],
                     fontsize=16,
-                    mouse_callbacks={"Button1": open_yay},
+                    mouse_callbacks={"Button1": open_paru},
                     background=colors[9],
                 ),
                 widget.CheckUpdates(
@@ -197,7 +199,7 @@ screens = [
                     no_update_string="No updates",
                     font="Source Code Pro",
                     fontsize=16,
-                    mouse_callbacks={"Button1": open_yay},
+                    mouse_callbacks={"Button1": open_paru},
                     background=colors[9],
                 ),
                 widget.Image(
@@ -274,23 +276,26 @@ screens = [
                     format="%d-%m-%Y %H:%M",
                     mouse_callbacks={"Button1": open_calcurse},
                 ),
-                widget.TextBox(
-                    font="Font Awesome 6 Free",
-                    text="  ",
-                    foreground=colors[5],
-                    background="#bf616a",
-                    padding=0,
-                    fontsize=16,
-                    mouse_callbacks={"Button1": lazy.spawn("reboot")},
+                widget.Image(
+                    filename="~/.config/qtile/round_r.png",
+                    background=colors[9],
+                    mouse_callbacks={
+                        "Button1": lazy.spawn(
+                            "rofi -show power-menu -modi power-menu:rofi-power-menu"
+                        )
+                    },
                 ),
                 widget.TextBox(
                     font="Font Awesome 6 Free",
-                    text=" ",
+                    text="   ",
                     foreground=colors[5],
                     background="#bf616a",
-                    padding=0,
                     fontsize=16,
-                    mouse_callbacks={"Button1": lazy.spawn("shutdown now")},
+                    mouse_callbacks={
+                        "Button1": lazy.spawn(
+                            "rofi -show power-menu -modi power-menu:rofi-power-menu"
+                        )
+                    },
                 ),
             ],
             24,
